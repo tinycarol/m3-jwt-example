@@ -1,10 +1,13 @@
-import { Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Login from "./components/Login";
+
 import jwt from "jsonwebtoken";
 import { useState } from "react";
-import Tweets from "./components/Tweets";
+import { Redirect, Route, Switch } from "react-router-dom";
+
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
+import Login from "./components/Login";
+import Navbar from "./components/Navbar";
+import Products from "./components/Products";
 
 function App() {
   const [user, setUser] = useState(
@@ -16,20 +19,32 @@ function App() {
     setUser(jwt.decode(token).user);
   };
 
+  const onLogout = () => {
+    setTimeout(() => {
+      localStorage.removeItem("token");
+      setUser(null);
+    }, 500);
+  };
+
   return (
-    <div className="App container mt-5">
-      <Switch>
-        <AuthenticatedRoute exact path="/tweets" user={user}>
-          <Tweets user={user} />
-        </AuthenticatedRoute>
-        <Route
-          exact
-          path="/login"
-          render={(props) => <Login {...props} onLogin={onLogin} user={user} />}
-        />
-        <Route exact path="/pepe" render={(props) => <h1>ola k ase</h1>} />
-        <Redirect to="/tweets" />
-      </Switch>
+    <div className="App ">
+      <Navbar onLogout={onLogout} user={user} />
+      <div className="container mt-3">
+        <Switch>
+          <AuthenticatedRoute exact path="/products" user={user}>
+            <Products user={user} />
+          </AuthenticatedRoute>
+          <Route
+            exact
+            path="/login"
+            render={(props) => (
+              <Login {...props} onLogin={onLogin} user={user} />
+            )}
+          />
+          <Route exact path="/pepe" render={(props) => <h1>ola k ase</h1>} />
+          <Redirect to="/products" />
+        </Switch>
+      </div>
     </div>
   );
 }

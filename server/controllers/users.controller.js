@@ -9,7 +9,7 @@ module.exports.authenticate = (req, res, next) => {
   }
   return res.json({
 		access_token: jwt.sign({ user: { ...user, password: undefined } }, process.env.JWT_SECRET || "changeme", {
-      expiresIn: "20s",
+      expiresIn: "2d",
     }),
   });
 };

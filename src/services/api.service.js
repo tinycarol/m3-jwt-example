@@ -29,4 +29,4 @@ http.interceptors.response.use(
 export const authenticate = (username, password) =>
   http.post("/auth", { username, password });
 
-export const getTweets = () => http.get("tweets");
+export const getProducts = () => http.get("/products");

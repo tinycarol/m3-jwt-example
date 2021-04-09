@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const authMiddleware = require("../middlewares/auth.middleware");
 const usersController = require("../controllers/users.controller");
-const tweetsController = require("../controllers/tweets.controller");
+const productsController = require("../controllers/products.controller");
 
 module.exports = router;
 
@@ -13,7 +13,7 @@ router.post(
 );
 
 router.get(
-  "/tweets",
+  "/products",
   authMiddleware.isAuthenticated,
-  tweetsController.list
+  productsController.list
 );

@@ -1,0 +1,6 @@
+[
+  { "user": 1, "name": "Camiseta", "price": "500" },
+  { "user": 2, "name": "Transportín gato", "price": "2000" },
+  { "user": 3, "name": "Vapeador", "price": "5000" },
+  { "user": 4, "name": "Libro", "price": "1000" }
+]

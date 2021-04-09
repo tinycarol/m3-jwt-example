@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { authenticate } from "../services/api.service";
 
 export default function Login({ onLogin, user }) {
@@ -35,10 +35,9 @@ export default function Login({ onLogin, user }) {
           {error}
         </div>
       )}
-      <Link to="/pepe">Ola k ase</Link>
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="username">Email address</label>
+          <label htmlFor="username">Username</label>
           <input
             type="string"
             className="form-control"
