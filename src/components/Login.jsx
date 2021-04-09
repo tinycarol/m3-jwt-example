@@ -5,15 +5,15 @@ import { authenticate } from "../services/api.service";
 export default function Login({ onLogin, user }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-	const [error, setError] = useState("");
+  const [error, setError] = useState("");
 
   const onSubmit = (e) => {
-		e.preventDefault();
+    e.preventDefault();
     authenticate(username, password)
-			.then((data) => {
-				onLogin(data.access_token);
-			})
-			.catch((error) => {
+      .then((data) => {
+        onLogin(data.access_token);
+      })
+      .catch((error) => {
         switch (error.response.status) {
           case 401:
             setError("Wrong credentials");
@@ -22,11 +22,11 @@ export default function Login({ onLogin, user }) {
             setError("Unknown error");
         }
       });
-	};
-	
-	if (user) {
-		return <Redirect to="/tweets" />;
-	}
+  };
+
+  if (user) {
+    return <Redirect to="/tweets" />;
+  }
 
   return (
     <div className="Login">
@@ -37,7 +37,7 @@ export default function Login({ onLogin, user }) {
       )}
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Usernam</label>
           <input
             type="string"
             className="form-control"

@@ -28,7 +28,6 @@ app.use((req, _, next) => {
     authHeader ? authHeader.split(" ")[1] : "",
     process.env.JWT_SECRET,
     (error, decoded) => {
-      console.log(error);
       if (decoded) {
         req.currentUser = decoded.user;
         // maybe get user from DB to get updated data? shouldn't be necessary with short expiration in tokens

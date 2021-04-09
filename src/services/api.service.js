@@ -17,12 +17,12 @@ http.interceptors.response.use(
     return response.data;
   },
   function (error) {
-    console.log(error);
-    if (error.response.status === 401) {
+    if (!error.request.responseURL.includes("/auth") && error.response.status === 401) {
       localStorage.removeItem("token");
       window.location.reload();
+    } else {
+      throw error;
     }
-    return error;
   }
 );
 

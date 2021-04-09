@@ -4,9 +4,9 @@ import UserInfo from "./UserInfo";
 export default function Navbar({ onLogout, user }) {
   return (
     <nav className="navbar navbar-light navbar-expand-lg bg-light">
-      <a className="navbar-brand">
+      <div className="navbar-brand">
         <img src="/amazhack.svg" width="50" height="50" alt="" />
-      </a>
+      </div>
       <NavLink activeClassName="active" className="navbar-brand" to="/products">
         AmazHack
       </NavLink>
