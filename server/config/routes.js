@@ -6,7 +6,7 @@ const tweetsController = require("../controllers/tweets.controller");
 
 module.exports = router;
 
-router.get(
+router.post(
   "/auth",
   authMiddleware.isNotAuthenticated,
   usersController.authenticate
